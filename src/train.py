@@ -2,6 +2,11 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import joblib, os
+import yaml
+
+# Загрузка параметров
+with open("params.yaml") as f:
+    params = yaml.safe_load(f)
 
 # Загрузка подготовленных данных
 df = pd.read_csv("data/processed/train.csv")

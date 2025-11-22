@@ -2,12 +2,17 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
+import yaml
+
+# Загрузка параметров
+with open("params.yaml") as f:
+    params = yaml.safe_load(f)
 
 # Загрузка данных
 df = pd.read_csv("data/raw/train.csv")
 
 # Сплит на train/test
-train, test = train_test_split(df, test_size=0.2, random_state=42)
+train, test = train_test_split(df, test_size=params['split_ratio'], random_state=params['random_state'])
 
 # Сохранение обработанных данных
 os.makedirs("data/processed", exist_ok=True)
