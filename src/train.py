@@ -1,7 +1,8 @@
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-import joblib, os
+import joblib
+import os
 import yaml
 
 # Загрузка параметров
@@ -18,6 +19,5 @@ model = LogisticRegression(max_iter=300)
 model.fit(X, y)
 
 # Сохранение модели
-os.makedirs("models", exist_ok=True)
 joblib.dump(model, "models/model.pkl")
 print("Сохранена модель в models/model.pkl")
